@@ -10,11 +10,17 @@
 
 <body>
   <!-- <img src="static/smiling_leo.gif" margin="20px auto" width=60px height="60px"> -->
-  <h1 style="text-align: center"><del>&#x2588&#x2588&#x2588&#x2588 的图书管理系统</del> <sub>数据删除</sub></h1>
+  <h1 style="text-align: center"><del>&#x2588&#x2588&#x2588&#x2588 的黑魔法图书馆</del> <sub>数据删除</sub></h1>
 
   <div style="text-align: center;">
     <div style="margin: 0px 10px 50px 10px; display: inline-block; vertical-align: top;">
-      <a class="home_button" href="{{ url_for('home') }}">Home</a><br>
+      <div style="text-align: center;">
+        <table style="margin-left: auto; margin-right: auto;">
+          <td width="110"><a id="reset_button" href="{{ url_for('reset') }}">Reset</a></td>
+          <td width="110"><a id="home_button" href="{{ url_for('home') }}">Home</a></td>
+        </table>
+      </div>
+      <br>
       <!-- 图书信息查询和插入 -->
       <form class="search_insert_form" method="POST">
         <fieldset>

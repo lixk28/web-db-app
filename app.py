@@ -9,6 +9,11 @@ app = Flask(__name__)
 def index():
   return redirect(url_for('home'))
 
+@app.route('/reset')
+def reset():
+  init_db()
+  return redirect(url_for('home'))
+
 @app.route('/home', methods=['GET', 'POST'])
 def home():
   if request.method == 'GET':

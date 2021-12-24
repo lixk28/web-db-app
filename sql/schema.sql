@@ -37,3 +37,12 @@ values ('b0007', '微积分初步', '978-7-304-03742-0', '赵坚', '中央广播
 
 insert into book (book_id, book_name, book_isbn, book_author, book_publisher, book_price, interview_times)
 values ('b0008', 'ASP.NET 从入门到精通', '978-7-302-28753-7', '明日科技', '清华大学出版社', 89.80, 27);
+
+insert into book (book_id, book_name, book_isbn, book_author, book_publisher, book_price, interview_times)
+values ('b0009', '如何征服英俊少男', '978-7-202-00349-7', '刘国章', '河北人民出版社', 2.12, 1000);
+
+insert into book (book_id, book_name, book_isbn, book_author, book_publisher, book_price, interview_times)
+values ('b0010', '哈利波特', '999-9-999-99999-9', 'YouKnowWho', '霍格沃茨魔法出版社', 100.0, 1);
+
+insert into book (book_id, book_name, book_isbn, book_author, book_publisher, book_price, interview_times)
+values ('bXXXX', '数据删除', 'XXX-X-XXX-XXXXX-X', 'S██w', '██████出版社', 666.0, 0);
