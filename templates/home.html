@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="utf-8">
+  <title>Snow's Book Table</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+
+<body>
+  <!-- <img src="static/smiling_leo.gif" margin="20px auto" width=60px height="60px"> -->
+  <h1 style="text-align: center"><del>&#x2588&#x2588&#x2588&#x2588 的图书管理系统</del> <sub>数据删除</sub></h1>
+
+  <div style="text-align: center;">
+    <div style="margin: 0px 10px 50px 10px; display: inline-block; vertical-align: top;">
+      <a class="home_button" href="{{ url_for('home') }}">Home</a><br>
+      <!-- 图书信息查询和插入 -->
+      <form class="search_insert_form" method="POST">
+        <fieldset>
+          <legend>图书信息查询和添加</legend>
+          <label>编号 (确认后无法修改)</label> <input type="text" name="book_id" /><br>
+          <label>书名</label> <input type="text" name="book_name" /><br>
+          <label>ISBN</label> <input type="text" name="book_isbn" /><br>
+          <label>作者</label> <input type="text" name="book_author" /><br>
+          <label>出版社</label> <input type="text" name="book_publisher" /><br>
+          <label>价格</label> <input type="number" step="0.01" min="0" name="book_price" /><br>
+          <label>借阅次数</label> <input type="number" step="1" min="0" name="interview_times" /><br>
+          <div style="margin: 10px auto; text-align: center;">
+            <input style="margin-right: 5px" id="search_button" type="submit" name="action" value="查询" formaction="{{ url_for('home') }}" />
+            <input style="margin-left: 5px" id="insert_button" type="submit" name="action" value="添加" formaction="{{ url_for('home') }}" />
+          </div>
+        </fieldset>
+      </form>
+      <br>
+      <img style="margin: 10px 10px 0px 10px;" src="./static/flying_cat.gif" width="210" height="100"/>
+      <br>
+      <a href="https://xkun.me">a link to nowhere</a>
+    </div>
+
+    <div style="display: inline-block; vertical-align: top;">
+      <!-- 图书信息列表 -->
+      <table style="display: inline-block; vertical-align: top;">
+        <tr>
+          <td>
+            <table class="table_header">
+              <tr style="color:white;background-color:grey">
+                <th>编号</th>
+                <th>书名</th>
+                <th>ISBN</th>
+                <th>作者</th>
+                <th>出版社</th>
+                <th>价格</th>
+                <th>借阅次数</th>
+                <th>操作</th>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div style="height: 500px; width: 1150px; overflow: auto;">
+              <table class="table_body">
+                {% for book in books %}
+                <tr>
+                  {% for item in book %}
+                  <td>{{item}}</td>
+                  {% endfor %}
+                  <td>
+                    <form class="update_delete_form" method="GET">
+                      <div>
+                        <input style="margin-right: 5px" id="update_button" type="submit" name="action" value="编辑"
+                          formaction="{{ url_for('edit', book_id=book[0]) }}" />
+                        <input styke="margin-left: 5px" id="delete_button" type="submit" name="action" value="删除"
+                          formaction="{{ url_for('delete', book_id=book[0]) }}" />
+                      </div>
+                    </form>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

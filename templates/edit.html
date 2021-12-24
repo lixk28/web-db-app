@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Book Item</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+      #edit_form fieldset
+      {
+        border-radius: 8px;
+        width: 4cm;
+        height: 10cm;
+        text-align: left;
+      }
+
+      #edit_form legend
+      {
+        text-align: center;
+      }
+
+      #confirm_edit_button, #return_button
+      {
+        height: 40px;
+        width: 80px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <div style="display: inline-block; vertical-align: top;">
+        <form style="font-size: large;" id="edit_form" method="POST">
+          <fieldset>
+            <legend>图书信息编辑</legend>
+            <!-- 编号<br> <input type="text" name="book_id" required value="{{ book[0] }}"/><br> -->
+            <label>书名</label><br> <input type="text" name="book_name" required value="{{ book[1] }}"/><br>
+            <label>ISBN</label><br> <input type="text" name="book_isbn" required value="{{ book[2] }}"/><br>
+            <label>作者</label><br> <input type="text" name="book_author" required value="{{ book[3] }}"/><br>
+            <label>出版社</label><br> <input type="text" name="book_publisher" required value="{{ book[4] }}"/><br>
+            <label>价格</label><br> <input type="number" step="0.01" min="0" name="book_price" required value="{{ book[5] }}"/><br>
+            <label>借阅次数</label><br> <input type="number" step="1" min="0" name="interview_times" required value="{{ book[6] }}"/><br><br>
+            <div style="margin: 10px auto; text-align: center;">
+              <input id="confirm_edit_button" type="submit" name="action" value="确认修改" formaction="{{ url_for('edit', book_id=book[0]) }}"/>
+              <input id="return_button" type="button" onclick="history.go(-1)" value="返回"/>      
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Delete Book Item</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <style>
+      #delete_table {
+        border-collapse: collapse;
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #delete_table td, #delete_table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+
+      #delete_table tr {background-color: #f2f2f2;}
+
+      #delete_table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+      }
+
+      #confirm_delete_button, #return_button
+      {
+        height: 40px;
+        width: 80px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3 style="margin-top: 80px; text-align: center;">确认删除下面的图书信息？</h3>
+    <table id="delete_table">
+      <tr>
+        <th>编号</th>
+        <th>书名</th>
+        <th>ISBN</th>
+        <th>作者</th>
+        <th>出版社</th>
+        <th>价格</th>
+        <th>借阅次数</th>
+      </tr>
+      <tr>
+        {% for item in book %}
+          <td>{{ item }}</td>
+        {% endfor %}
+      </tr>
+    </table>
+    <div style="margin-top: 20px; text-align: center;">
+      <form method="POST">
+        <input style="margin-right: 5px" id="confirm_delete_button" type="submit" name="action" value="确认删除" formaction="{{ url_for('delete', book_id=book[0]) }}" />
+        <input style="margin-left: 5px" id="return_button" type="button" onclick="history.go(-1)" value="返回"/>
+      </form>
+    </div>
+  </body>
+</html>
